@@ -25,6 +25,51 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "summary": "Create a new collection",
+                "operationId": "createCollection",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "The name of the collection"
+                                    },
+                                    "sets": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Set"
+                                        },
+                                        "description": "Optional sets included with the new collection"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "The created collection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Collection"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload"
+                    }
+                }
             }
         },
         "/collections/{collectionId}/sets": {
