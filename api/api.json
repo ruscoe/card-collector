@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Card Collector API",
-        "verison": "1.0.0",
+        "version": "1.0.0",
         "description": "API for the Card Collector application."
     },
     "paths": {
