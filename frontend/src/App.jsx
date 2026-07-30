@@ -89,6 +89,42 @@ function App() {
     loadCollections();
   }
 
+  async function handleDeleteCollection(collectionId) {
+    const res = await fetch(`${API_BASE}/collections/${collectionId}`, {
+      method: "DELETE",
+    });
+    if (!res.ok) {
+      const payload = await res.json();
+      setError(payload.error || "Unable to delete collection");
+      return;
+    }
+    loadCollections();
+  }
+
+  async function handleDeleteSet(setId) {
+    const res = await fetch(`${API_BASE}/sets/${setId}`, {
+      method: "DELETE",
+    });
+    if (!res.ok) {
+      const payload = await res.json();
+      setError(payload.error || "Unable to delete set");
+      return;
+    }
+    loadCollections();
+  }
+
+  async function handleDeleteCard(cardId) {
+    const res = await fetch(`${API_BASE}/cards/${cardId}`, {
+      method: "DELETE",
+    });
+    if (!res.ok) {
+      const payload = await res.json();
+      setError(payload.error || "Unable to delete card");
+      return;
+    }
+    loadCollections();
+  }
+
   return (
     <div className="app-container">
       <header>
@@ -118,7 +154,15 @@ function App() {
             <div key={collection.id} className="card">
               <div className="collection-header">
                 <h3>{collection.name}</h3>
-                <span>ID: {collection.id}</span>
+                <div>
+                  <span>ID: {collection.id}</span>
+                  <button
+                    className="delete-button"
+                    onClick={() => handleDeleteCollection(collection.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
 
               <div className="card-body">
@@ -149,7 +193,15 @@ function App() {
                     <div key={setItem.id} className="set-card">
                       <div className="collection-header">
                         <h4>{setItem.name}</h4>
-                        <span>Set ID: {setItem.id}</span>
+                        <div>
+                          <span>Set ID: {setItem.id}</span>
+                          <button
+                            className="delete-button"
+                            onClick={() => handleDeleteSet(setItem.id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
 
                       <form
@@ -194,8 +246,16 @@ function App() {
                       ) : (
                         <ul className="nested-list">
                           {setItem.cards.map((card) => (
-                            <li key={card.id}>
-                              {card.name} (#{card.number})
+                            <li key={card.id} className="card-item">
+                              <span>
+                                {card.name} (#{card.number})
+                              </span>
+                              <button
+                                className="delete-button small"
+                                onClick={() => handleDeleteCard(card.id)}
+                              >
+                                Delete
+                              </button>
                             </li>
                           ))}
                         </ul>

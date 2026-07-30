@@ -38,6 +38,33 @@ h4 {
   margin-top: 12px;
 }
 
+.delete-button {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background: #dc2626;
+}
+
+.delete-button.small {
+  padding: 6px 10px;
+  font-size: 0.9rem;
+}
+
+.card-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
 .row-form input,
 .row-form button {
   padding: 10px 12px;
