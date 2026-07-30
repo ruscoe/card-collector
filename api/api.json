@@ -5,7 +5,29 @@
         "verison": "1.0.0",
         "description": "API for the Card Collector application."
     },
-    "paths": {},
+    "paths": {
+        "/collections": {
+            "get": {
+                "summary": "List all collections",
+                "operationId": "listCollections",
+                "responses": {
+                    "200": {
+                        "description": "An array of collections",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Collection"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
     "components": {
         "schemas": {
             "Card": {
