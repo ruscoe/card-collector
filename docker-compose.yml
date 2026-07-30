@@ -11,6 +11,8 @@ services:
       - DATABASE_URL
     depends_on:
       - db
+    networks:
+      - app_net
 
   frontend:
     image: node:20-alpine
@@ -23,6 +25,8 @@ services:
       - "3000:3000"
     depends_on:
       - web
+    networks:
+      - app_net
 
   db:
     image: postgres:15-alpine
@@ -36,6 +40,12 @@ services:
       - db-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - app_net
 
 volumes:
   db-data:
+
+networks:
+  app_net:
+    driver: bridge
