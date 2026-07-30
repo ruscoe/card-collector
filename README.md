@@ -4,6 +4,6 @@ A Python application for managing trading card collections.
 
 ## Running
 
-Run: `docker compose up --build`
+Run: `make up`
 
 Open [http://localhost:3000/](http://localhost:3000/)
