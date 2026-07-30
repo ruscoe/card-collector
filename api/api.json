@@ -72,6 +72,32 @@
                 }
             }
         },
+        "/collections/{collectionId}": {
+            "delete": {
+                "summary": "Delete a collection",
+                "operationId": "deleteCollection",
+                "parameters": [
+                    {
+                        "name": "collectionId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "The unique ID of the collection to delete"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Collection deleted successfully"
+                    },
+                    "404": {
+                        "description": "Collection not found"
+                    }
+                }
+            }
+        },
         "/collections/{collectionId}/sets": {
             "get": {
                 "summary": "List all sets in a collection",
