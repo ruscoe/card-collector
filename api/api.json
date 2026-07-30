@@ -164,6 +164,64 @@
                 }
             }
         },
+        "/cards": {
+            "post": {
+                "summary": "Create a new card",
+                "operationId": "createCard",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "name",
+                                    "setId",
+                                    "number"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "The name of the card"
+                                    },
+                                    "setId": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "description": "The ID of the set this card belongs to"
+                                    },
+                                    "number": {
+                                        "type": "integer",
+                                        "description": "The number of this card in the set"
+                                    },
+                                    "set": {
+                                        "type": "string",
+                                        "description": "The name of the set this card belongs to"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "The created card",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Card"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload"
+                    },
+                    "404": {
+                        "description": "Set not found"
+                    }
+                }
+            }
+        },
         "/sets/{setId}/cards": {
             "get": {
                 "summary": "List all cards in a set",
