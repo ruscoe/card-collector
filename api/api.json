@@ -96,6 +96,63 @@
                         "description": "Collection not found"
                     }
                 }
+            },
+            "patch": {
+                "summary": "Modify an existing collection",
+                "operationId": "updateCollection",
+                "parameters": [
+                    {
+                        "name": "collectionId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "The unique ID of the collection to modify"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "The new name of the collection"
+                                    },
+                                    "sets": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Set"
+                                        },
+                                        "description": "Updated list of sets for the collection"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The updated collection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Collection"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload"
+                    },
+                    "404": {
+                        "description": "Collection not found"
+                    }
+                }
             }
         },
         "/collections/{collectionId}/sets": {
@@ -214,6 +271,68 @@
                         "description": "Set not found"
                     }
                 }
+            },
+            "patch": {
+                "summary": "Modify an existing set",
+                "operationId": "updateSet",
+                "parameters": [
+                    {
+                        "name": "setId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "The unique ID of the set to modify"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "The new name of the set"
+                                    },
+                                    "collectionId": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "description": "The ID of the collection this set belongs to"
+                                    },
+                                    "cards": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Card"
+                                        },
+                                        "description": "Updated list of cards for the set"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The updated set",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Set"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload"
+                    },
+                    "404": {
+                        "description": "Set not found"
+                    }
+                }
             }
         },
         "/cards": {
@@ -293,6 +412,69 @@
                 "responses": {
                     "204": {
                         "description": "Card deleted successfully"
+                    },
+                    "404": {
+                        "description": "Card not found"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Modify an existing card",
+                "operationId": "updateCard",
+                "parameters": [
+                    {
+                        "name": "cardId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "The unique ID of the card to modify"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "The new name of the card"
+                                    },
+                                    "setId": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "description": "The ID of the set this card belongs to"
+                                    },
+                                    "number": {
+                                        "type": "integer",
+                                        "description": "The number of this card in the set"
+                                    },
+                                    "set": {
+                                        "type": "string",
+                                        "description": "The name of the set this card belongs to"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The updated card",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Card"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload"
                     },
                     "404": {
                         "description": "Card not found"
