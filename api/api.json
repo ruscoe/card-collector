@@ -6,5 +6,30 @@
         "description": "API for the Card Collector application."
     },
     "paths": {},
-    "components": {}
+    "components": {
+        "schemas": {
+            "Card": {
+                "type": "object",
+                "required": [
+                    "set",
+                    "name",
+                    "number"
+                ],
+                "properties": {
+                    "set": {
+                        "type": "string",
+                        "description": "The set this card belongs to"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this card"
+                    },
+                    "number": {
+                        "type": "integer",
+                        "description": "The number of this card in the set"
+                    }
+                }
+            }
+        }
+    }
 }
