@@ -29,6 +29,44 @@
                         "description": "The number of this card in the set"
                     }
                 }
+            },
+            "Set": {
+                "type": "object",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this set"
+                    },
+                    "cards": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Card"
+                        },
+                        "description": "The cards in this set"
+                    }
+                }
+            },
+            "Collection": {
+                "type": "object",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of this collection"
+                    },
+                    "sets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Set"
+                        },
+                        "description": "The sets in this collection"
+                    }
+                }
             }
         }
     }
