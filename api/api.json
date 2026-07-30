@@ -34,6 +34,7 @@
                 "type": "object",
                 "required": [
                     "id",
+                    "setId",
                     "set",
                     "name",
                     "number"
@@ -43,6 +44,16 @@
                         "type": "integer",
                         "format": "int64",
                         "description": "Auto-incrementing unique ID for the card"
+                    },
+                    "setId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Reference to the set by its unique ID",
+                        "x-relationship": {
+                            "type": "belongsTo",
+                            "target": "#/components/schemas/Set",
+                            "targetKey": "id"
+                        }
                     },
                     "set": {
                         "type": "string",
@@ -62,6 +73,7 @@
                 "type": "object",
                 "required": [
                     "id",
+                    "collectionId",
                     "name"
                 ],
                 "properties": {
@@ -69,6 +81,16 @@
                         "type": "integer",
                         "format": "int64",
                         "description": "Auto-incrementing unique ID for the set"
+                    },
+                    "collectionId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Reference to the collection by its unique ID",
+                        "x-relationship": {
+                            "type": "belongsTo",
+                            "target": "#/components/schemas/Collection",
+                            "targetKey": "id"
+                        }
                     },
                     "name": {
                         "type": "string",
