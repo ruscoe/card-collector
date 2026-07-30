@@ -222,6 +222,32 @@
                 }
             }
         },
+        "/cards/{cardId}": {
+            "delete": {
+                "summary": "Delete a card",
+                "operationId": "deleteCard",
+                "parameters": [
+                    {
+                        "name": "cardId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "The unique ID of the card to delete"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Card deleted successfully"
+                    },
+                    "404": {
+                        "description": "Card not found"
+                    }
+                }
+            }
+        },
         "/sets/{setId}/cards": {
             "get": {
                 "summary": "List all cards in a set",
