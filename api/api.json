@@ -108,6 +108,62 @@
                 }
             }
         },
+        "/sets": {
+            "post": {
+                "summary": "Create a new set",
+                "operationId": "createSet",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "name",
+                                    "collectionId"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "The name of the set"
+                                    },
+                                    "collectionId": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "description": "The ID of the collection this set belongs to"
+                                    },
+                                    "cards": {
+                                        "type": "array",
+                                        "items": {
+                                            "$ref": "#/components/schemas/Card"
+                                        },
+                                        "description": "Optional cards included with the new set"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "The created set",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Set"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload"
+                    },
+                    "404": {
+                        "description": "Collection not found"
+                    }
+                }
+            }
+        },
         "/sets/{setId}/cards": {
             "get": {
                 "summary": "List all cards in a set",
