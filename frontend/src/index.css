@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f4f6f8;
+  color: #20232a;
+}
+
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+header {
+  margin-bottom: 24px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #dfe3e8;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+.row-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.row-form input,
+.row-form button {
+  padding: 10px 12px;
+  border: 1px solid #ccd0d8;
+  border-radius: 8px;
+}
+
+.row-form button {
+  background: #2563eb;
+  color: white;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.row-form button:hover {
+  background: #1d4ed8;
+}
+
+.card {
+  border: 1px solid #dfe3e8;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.collection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-body {
+  margin-top: 16px;
+}
+
+.set-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 14px;
+  background: #fafbfc;
+}
+
+.nested-list {
+  padding-left: 18px;
+  margin: 10px 0 0;
+}
+
+.small-text {
+  color: #525252;
+  font-size: 0.95rem;
+}
+
+.error {
+  margin-bottom: 16px;
+  padding: 14px;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 10px;
+}
