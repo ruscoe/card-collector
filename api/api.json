@@ -164,6 +164,32 @@
                 }
             }
         },
+        "/sets/{setId}": {
+            "delete": {
+                "summary": "Delete a set",
+                "operationId": "deleteSet",
+                "parameters": [
+                    {
+                        "name": "setId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "The unique ID of the set to delete"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Set deleted successfully"
+                    },
+                    "404": {
+                        "description": "Set not found"
+                    }
+                }
+            }
+        },
         "/cards": {
             "post": {
                 "summary": "Create a new card",
