@@ -26,6 +26,78 @@
                     }
                 }
             }
+        },
+        "/collections/{collectionId}/sets": {
+            "get": {
+                "summary": "List all sets in a collection",
+                "operationId": "listSetsByCollection",
+                "parameters": [
+                    {
+                        "name": "collectionId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "The unique ID of the collection"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of sets in the specified collection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Set"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Collection not found"
+                    }
+                }
+            }
+        },
+        "/sets/{setId}/cards": {
+            "get": {
+                "summary": "List all cards in a set",
+                "operationId": "listCardsBySet",
+                "parameters": [
+                    {
+                        "name": "setId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "The unique ID of the set"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of cards in the specified set",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Card"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Set not found"
+                    }
+                }
+            }
         }
     },
     "components": {
